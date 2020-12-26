@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// src\App.tsx
+
+import { Switch, Route } from "react-router-dom";
+
+import Home from "./pages/home.page";
+import Project from "./pages/project.page";
+import Bug from "./pages/bug.page";
+import Layout from "./components/layout/layout.component";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/project" exact>
+          {/* TODO: will be dynamic route eventually */}
+          <Project />
+        </Route>
+        <Route path="/bug" exact>
+          {/* TODO: will be dynamic route eventually */}
+          <Bug />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 
