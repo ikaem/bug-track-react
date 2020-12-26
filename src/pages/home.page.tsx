@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <main className="main-content">
       {/* sidebar navigation start here*/}
