@@ -1,40 +1,31 @@
 // src\components\layout\header.component.tsx
 
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+import colors from "../../styles/colors.constant";
+import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 
 const Header: React.FC = () => {
   return (
-    <header className="main-header">
+    <HeaderStyled colors={colors} className="main-header">
       <nav className="main-header_header-nav">
         <ul className="header-nav_left-nav">
           <li className="left-nav_nav-option">
-            <Link to="/">
-              <span>&gt;</span>
-              <span>Home | </span>
-            </Link>
-          </li>
-          <li className="left-nav_nav-option">
-            <Link to="/project">
-              <span>&gt;</span>
-              <span>Project | </span>
-            </Link>
-          </li>
-          <li className="left-nav_nav-option">
-            <Link to="/bug">
-              <span>&gt;</span>
-              <span>Bug | </span>
+            <Link to="/" title="Home">
+              <span>&gt;&gt;</span>
+              <span className="desktop-size-label">Home</span>
             </Link>
           </li>
         </ul>
         <div className="header-nav_logo-container">
-          <span>&gt;</span>
-          <span>BUG track.</span>
+          <Logo />
         </div>
         <ul className="header-nav_right-nav">
           <li className="right-nav_nav-option">
             <Link to="#">
               <span>P+</span>
-              <span>Add project</span>
+              <span className="desktop-size-label">Add project</span>
             </Link>
           </li>
           <li className="right-nav_nav-option">
@@ -44,8 +35,58 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </nav>
-    </header>
+      <div>
+        <Link to="/" title="Home">
+          Home
+        </Link>
+        <Link to="/project" title="Project">
+          Project
+        </Link>
+        <Link to="/bug" title="Bug">
+          Bug
+        </Link>
+      </div>
+    </HeaderStyled>
   );
 };
 
 export default Header;
+
+const HeaderStyled = styled.header<{ colors: typeof colors }>`
+  background-color: ${({ colors }) => colors.blue};
+  padding: 1rem;
+
+  .desktop-size-label {
+    display: none;
+  }
+
+  a {
+    color: white;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+
+    > ul {
+      display: flex;
+      flex: 0.4;
+
+      &.header-nav_left-nav {
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      &.header-nav_right-nav {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .header-nav_logo-container {
+      flex: 0.2;
+      display: flex;
+      place-items: center;
+    }
+  }
+`;
