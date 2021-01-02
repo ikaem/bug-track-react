@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./pages/home.page";
 import Project from "./pages/project.page";
 import Bug from "./pages/bug.page";
-import Layout from "./components/layout/layout.component";
+import Layout from "./components/global-layout/layout.component";
 
 function App() {
   return (
